@@ -7,11 +7,7 @@ namespace Etapa1
     {
         static void Main(string[] args)
         {
-            var school = new School("Platzi", 2012);
-            school.schoolType = SchoolType.Elementaryschool;
-            school.country = "Colombia";
-            school.city = "Bogotá";
-            
+            var school = new School("Platzi", 2012, SchoolType.Elementaryschool, "Colombia", "Bogotá");
             Console.WriteLine(school);
         }
     }
