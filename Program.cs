@@ -1,5 +1,7 @@
 ﻿using System;
+using Etapa1.Entities;
 using Sch.Entities;
+using static System.Console;
 
 namespace Etapa1
 {
@@ -9,21 +11,23 @@ namespace Etapa1
         {
             var school = new School("Platzi", 2012, SchoolType.Elementaryschool, "Colombia", "Bogotá");
             var course1 = new Course();
-            course1.name = "301";
+            course1.Name = "301";
 
             var course2 = new Course();
-            course2.name = "302";
+            course2.Name = "302";
 
             var course3 = new Course();
-            course3.name = "303";
+            course3.Name = "303";
+            
+            
 
-            Console.WriteLine(school);
+            WriteLine(school);
             Console.WriteLine("===========");
-            Console.WriteLine(course1.name + ", " + course1.uniqueId);
+            Console.WriteLine(course1.Name + ", " + course1.UniqueId);
             Console.WriteLine("===========");
-            Console.WriteLine(course2.name + ", " + course2.uniqueId);
+            Console.WriteLine(course2.Name + ", " + course2.UniqueId);
             Console.WriteLine("===========");
-            Console.WriteLine(course3.name + ", " + course3.uniqueId);
+            Console.WriteLine(course3.Name + ", " + course3.UniqueId);
         }
     }
 }

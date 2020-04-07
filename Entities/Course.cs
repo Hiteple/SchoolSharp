@@ -1,16 +1,17 @@
 using System;
+using Sch.Entities;
 
-namespace Sch.Entities
+namespace Etapa1.Entities
 {
     public class Course
     {
-        public string name { get; set; }
-        public string uniqueId { get; private set; }
-        public HourType hourType { get; set;  }
+        public string Name { get; set; }
+        public string UniqueId { get; private set; }
+        public HourType HourType { get; set;  }
 
         public Course()
         {
-            this.uniqueId = Guid.NewGuid().ToString();
+            this.UniqueId = Guid.NewGuid().ToString();
         }
     }
 }

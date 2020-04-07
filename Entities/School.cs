@@ -1,31 +1,35 @@
-namespace Sch.Entities
+using Sch.Entities;
+
+namespace Etapa1.Entities
 {
     class School
     {
-        public string name { get; set; }
-        public int creationYear { get; set; }
-        public SchoolType schoolType { get; set; }
-        public string country { get; set; }
-        public string city { get; set; }
+        public string Name { get; set; }
+        public int CreationYear { get; set; }
+        public SchoolType SchoolType { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        
+        public Course[] Courses { get; set; }
 
         public School(string name, int year)
         {
-            this.name = name;
-            this.creationYear = year;
+            this.Name = name;
+            this.CreationYear = year;
         }
         
         public School(string name, int year, SchoolType type, string country, string city)
         {
-          this.name = name;
-          this.creationYear = year;
-          this.schoolType = type;
-          this.country = country;
-          this.city = city;
+          this.Name = name;
+          this.CreationYear = year;
+          this.SchoolType = type;
+          this.Country = country;
+          this.City = city;
         }
         
         public override string ToString()
         {
-            return $"Name: {name}, Year: {creationYear}, SchoolType: {schoolType} \n Country: {country}, City: {city}";
+            return $"Name: {Name}, Year: {CreationYear}, SchoolType: {SchoolType} \n Country: {Country}, City: {City}";
         }
     }
 }
