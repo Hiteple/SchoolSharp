@@ -10,24 +10,30 @@ namespace Etapa1
         static void Main(string[] args)
         {
             var school = new School("Platzi", 2012, SchoolType.Elementaryschool, "Colombia", "Bogotá");
-            var course1 = new Course();
-            course1.Name = "301";
 
-            var course2 = new Course();
-            course2.Name = "302";
+            school.Courses = new Course[]
+            {
+                new Course() {Name = "101"},
+                new Course() {Name = "102"},
+                new Course() {Name = "103"}
+            };
 
-            var course3 = new Course();
-            course3.Name = "303";
-            
-            
+            PrintCourses(school);
+        }
 
-            WriteLine(school);
-            Console.WriteLine("===========");
-            Console.WriteLine(course1.Name + ", " + course1.UniqueId);
-            Console.WriteLine("===========");
-            Console.WriteLine(course2.Name + ", " + course2.UniqueId);
-            Console.WriteLine("===========");
-            Console.WriteLine(course3.Name + ", " + course3.UniqueId);
+        private static void PrintCourses(School school)
+        {
+            WriteLine("===============");
+            WriteLine("School's courses:");
+            WriteLine("===============");
+
+            if (school?.Courses != null)
+            {
+                foreach (var course in school.Courses)
+                {
+                    WriteLine($"Name: {course.Name}, Id: {course.UniqueId}");
+                }
+            }
         }
     }
 }
