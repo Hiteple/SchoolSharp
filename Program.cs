@@ -19,10 +19,12 @@ namespace Etapa1
                 new Course("301", HourType.Morning)
             };
 
+            // ADD //
             // Add
             school.Courses.Add(new Course("102", HourType.Afternoon));
             school.Courses.Add(new Course("202", HourType.Afternoon));
             
+            // REMOVE //
             // Remove all
             school.Courses.Clear();
             
@@ -38,6 +40,19 @@ namespace Etapa1
             school.Courses.Add(temporaryCourse2);
             Predicate<Course> myPredicate = PredicateMethod;
             school.Courses.RemoveAll(myPredicate);
+            
+            // Another way using delegate keyword
+            Course temporaryCourse3 = new Course("600", HourType.Afternoon);
+            school.Courses.Add(temporaryCourse3);
+            school.Courses.RemoveAll(delegate(Course course)
+            {
+                return course.Name == "600";
+            });
+            
+            // Another way using lambda expression
+            Course temporaryCourse4 = new Course("600", HourType.Afternoon);
+            school.Courses.Add(temporaryCourse4);
+            school.Courses.RemoveAll(course => course.Name == "600" && course.HourType == HourType.Morning);
             
             // Print
             PrintCourses(school);
@@ -58,7 +73,7 @@ namespace Etapa1
             {
                 foreach (var course in school.Courses)
                 {
-                    WriteLine($"Name: {course.Name}, Id: {course.UniqueId}");
+                    WriteLine($"Name: {course.Name}, Id: {course.UniqueId}, Hour: {course.HourType}");
                 }
             }
         }
