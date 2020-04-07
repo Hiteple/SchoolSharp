@@ -1,4 +1,4 @@
-namespace Sch.Entities
+namespace Etapa1.Entities
 {
     public enum SchoolType
     {

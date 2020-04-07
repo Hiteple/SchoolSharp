@@ -1,5 +1,5 @@
 using System;
-using Sch.Entities;
+using Etapa1.Entities;
 
 namespace Etapa1.Entities
 {

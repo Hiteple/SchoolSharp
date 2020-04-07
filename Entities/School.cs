@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using Sch.Entities;
 
 namespace Etapa1.Entities
 {
-    class School
+    public class School
     {
         public string Name { get; set; }
         public int CreationYear { get; set; }
