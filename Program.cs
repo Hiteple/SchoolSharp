@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Etapa1.App;
+﻿using Etapa1.App;
 using Etapa1.Entities;
+using Etapa1.Utils;
 using static System.Console;
 
 namespace Etapa1
@@ -12,14 +11,14 @@ namespace Etapa1
         {
             var engine = new SchoolEngine();
             engine.Initialize();
+            Printer.DrawTitle("Welcome to the school!");
+            
             // Print
             PrintCourses(engine.School);
         }
         private static void PrintCourses(School school)
         {
-            WriteLine("===============");
-            WriteLine("School's courses:");
-            WriteLine("===============");
+            Printer.DrawTitle("School Courses:");
 
             if (school?.Courses != null)
             {

@@ -20,7 +20,7 @@ namespace Etapa1.App
                 new Course("101", HourType.Morning),
                 new Course("201", HourType.Morning),
                 new Course("301", HourType.Morning)
-            };
+            };    
 
             // ADD //
             // Add
