@@ -25,7 +25,18 @@ namespace Etapa1.App
             AddSubjects();
 
             // Exams
-            AddExams();
+            AddExamRandomly();
+
+            foreach (var course in School.Courses)
+            {
+                foreach (var student in course.Students)
+                {
+                    foreach (var exam in student.Exams)
+                    {
+                        Console.WriteLine($"{student.Name} {exam.Name}, {exam.Result}"); 
+                    }
+                }
+            }
 
             // ADD //
             // Add
@@ -65,11 +76,6 @@ namespace Etapa1.App
             */
         }
 
-        private void AddExams()
-        {
-            //throw new NotImplementedException();
-        }
-
         private void AddSubjects()
         {
             foreach (var course in School.Courses)
@@ -82,6 +88,25 @@ namespace Etapa1.App
                     new Subject("Philosophy")
                 };
                 course.Subjects = subjectsList;
+            }
+        }
+
+        private void AddExamRandomly()
+        {
+            Random random = new Random();
+            foreach (var course in School.Courses)
+            {
+                foreach (var student in course.Students)
+                {
+                    List<Exam> examsList = new List<Exam>()
+                    {
+                        new Exam("Mathematics Exam", $"{student.Name}", random.NextDouble() * (5.0 - 0.1) + 0.1),
+                        new Exam("English Exam", $"{student.Name}", random.NextDouble() * (5.0 - 0.1) + 0.1),
+                        new Exam("Cience Exam", $"{student.Name}", random.NextDouble() * (5.0 - 0.1) + 0.1),
+                        new Exam("Philosophy Exam", $"{student.Name}", random.NextDouble() * (5.0 - 0.1) + 0.1),
+                    };
+                    student.Exams = examsList;
+                }
             }
         }
         
