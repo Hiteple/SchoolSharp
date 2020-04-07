@@ -9,9 +9,11 @@ namespace Etapa1.Entities
         public string UniqueId { get; private set; }
         public HourType HourType { get; set;  }
 
-        public Course()
+        public Course(string name, HourType hour)
         {
-            this.UniqueId = Guid.NewGuid().ToString();
+            UniqueId = Guid.NewGuid().ToString();
+            Name = name;
+            HourType = hour;
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Sch.Entities;
 
 namespace Etapa1.Entities
@@ -10,7 +11,7 @@ namespace Etapa1.Entities
         public string Country { get; set; }
         public string City { get; set; }
         
-        public Course[] Courses { get; set; }
+        public List<Course> Courses { get; set; }
 
         public School(string name, int year)
         {
