@@ -79,7 +79,7 @@ namespace Etapa1.App
         }
 
         // Regions are for easier reading purposes and help in collapsing blocks of code in the IDE
-        #region ObjectsAddingMethods
+        #region Here are the methods that add custom-typed objects to the school
         private void AddSubjects()
         {
             foreach (var course in School.Courses)
