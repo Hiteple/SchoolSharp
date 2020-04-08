@@ -78,6 +78,8 @@ namespace Etapa1.App
             */
         }
 
+        // Regions are for easier reading purposes and help in collapsing blocks of code in the IDE
+        #region ObjectsAddingMethods
         private void AddSubjects()
         {
             foreach (var course in School.Courses)
@@ -148,6 +150,7 @@ namespace Etapa1.App
                 course.Students = AddStudentsRandomly(randomNum).ToList();
             }
         }
+        #endregion
         
         private static bool PredicateMethod(Course courseObj)
         {

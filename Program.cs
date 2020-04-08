@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Etapa1.App;
 using Etapa1.Entities;
+using Etapa1.Interfaces;
 using Etapa1.Utils;
 using static System.Console;
 
@@ -19,7 +21,14 @@ namespace Etapa1
             
             // Obtain Core Objects
             var objList = engine.ObtainCoreObjects();
-            WriteLine("wdwd");
+
+            // using Linq to obtain list of addresses
+            var iAddressList = 
+                from obj in objList 
+                where obj is IAddress
+                select (IAddress) obj;
+
+            engine.School.ClearAddress();
 
             /*
             // Polymorphism tests
