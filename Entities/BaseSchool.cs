@@ -14,5 +14,10 @@ namespace Etapa1.Entities
         {
             UniqueId = Guid.NewGuid().ToString();
         }
+
+        public override string ToString()
+        {
+            return $"{Name}, {UniqueId}";
+        }
     }
 }

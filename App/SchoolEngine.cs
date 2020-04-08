@@ -153,5 +153,24 @@ namespace Etapa1.App
         {
             return courseObj.Name == "600";
         }
+
+        public List<BaseSchool> ObtainCoreObjects()
+        {
+            var objList = new List<BaseSchool>();
+            objList.Add(School);
+            objList.AddRange(School.Courses);
+            foreach (var course in School.Courses)
+            {
+                objList.AddRange(course.Subjects);
+                objList.AddRange(course.Students);
+                foreach (var student in course.Students)
+                {
+                    objList.AddRange(student.Exams);
+                }
+            }
+            
+            return objList;
+            
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Etapa1.App;
+﻿using System;
+using Etapa1.App;
 using Etapa1.Entities;
 using Etapa1.Utils;
 using static System.Console;
@@ -15,6 +16,25 @@ namespace Etapa1
             
             // Print
             PrintCourses(engine.School);
+            
+            // Obtain Core Objects
+            var objList = engine.ObtainCoreObjects();
+            WriteLine("wdwd");
+
+            /*
+            // Polymorphism tests
+            Printer.DrawLine();
+            Printer.DrawLine();
+            Printer.DrawLine();
+            Printer.DrawTitle("Polymorphism tests:");
+            
+            var studentTest = new Student("Pablito");
+            BaseSchool ob = studentTest;
+            
+            WriteLine("Student: Polymorphism works?");
+            WriteLine($"{studentTest.GetType()}");
+            WriteLine($"{ob.GetType()}");
+            */
         }
         private static void PrintCourses(School school)
         {

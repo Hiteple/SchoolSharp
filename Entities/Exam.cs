@@ -16,5 +16,10 @@ namespace Etapa1.Entities
             StudentName = studentName;
             Result = result;
         }
+
+        public override string ToString()
+        {
+            return $"{Result}, {StudentName}";
+        }
     }
 }
