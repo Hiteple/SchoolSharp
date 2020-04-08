@@ -1,18 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.IO.Compression;
 
 namespace Etapa1.Entities
 {
-    public class Student
+    public class Student: BaseSchool
     {
-        public string UniqueId { get; set; }
-        public string Name { get; set; }
-        
         public List<Exam> Exams { get; set; }
 
         public Student(string name)
         {
-            UniqueId = Guid.NewGuid().ToString();
             Name = name;
         }
     }

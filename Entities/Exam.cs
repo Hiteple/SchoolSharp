@@ -2,11 +2,8 @@ using System;
 
 namespace Etapa1.Entities
 {
-    public class Exam
+    public class Exam: BaseSchool
     {
-        public string UniqueId { get; set; }
-        public string Name { get; set; }
-        
         public string StudentName { get; set; }
         
         public Subject Subject { get; set; }
@@ -15,7 +12,6 @@ namespace Etapa1.Entities
 
         public Exam(string name, string studentName, double result)
         {
-            UniqueId = Guid.NewGuid().ToString();
             Name = name;
             StudentName = studentName;
             Result = result;

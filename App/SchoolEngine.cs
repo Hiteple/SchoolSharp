@@ -5,8 +5,10 @@ using Etapa1.Entities;
 
 namespace Etapa1.App
 {
-    public class SchoolEngine
+    public sealed class SchoolEngine
     {
+        // Sealed means you cannot use this for inheritance, but you can use it for instantiation
+        // Abstract is the opposite: you can use for inheritance but not for instantiation (like in BaseSchool)
         public School School { get; set; }
 
         public SchoolEngine()
