@@ -1,14 +1,20 @@
+using System;
 using System.Collections.Generic;
+using Etapa1.Interfaces;
+using Etapa1.Utils;
 
 namespace Etapa1.Entities
 {
-    public class School: BaseSchool
+    // We don't use extends in C#: we use : to implement inheritance and/or interfaces
+    public class School: BaseSchool, IAddress
     {
         public int CreationYear { get; set; }
         public SchoolType SchoolType { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
-        
+
+        public string Address { get; set; }
+
         public List<Course> Courses { get; set; }
 
         public School(string name, int year, SchoolType type, string country, string city)
@@ -19,7 +25,18 @@ namespace Etapa1.Entities
           Country = country;
           City = city;
         }
-        
+
+        public void ClearAddress()
+        {
+            Printer.DrawLine();
+            Console.WriteLine($"Cleaning {Name} School...");
+            foreach (var course in Courses)
+            {
+                // if I clean the school I'm cleaning the courses, of course
+                course.ClearAddress();
+            }
+        }
+
         public override string ToString()
         {
             return $"Name: {Name}, Year: {CreationYear}, SchoolType: {SchoolType} \n Country: {Country}, City: {City}";
