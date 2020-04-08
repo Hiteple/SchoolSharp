@@ -1,4 +1,4 @@
-namespace Etapa1.Entities
+namespace SchoolSharp.Entities
 {
     public enum HourType
     {

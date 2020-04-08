@@ -1,6 +1,6 @@
 using static System.Console;
 
-namespace Etapa1.Utils
+namespace SchoolSharp.Utils
 {
     public static class Printer
     {

@@ -1,7 +1,6 @@
 using System;
-using System.Xml;
 
-namespace Etapa1.Entities
+namespace SchoolSharp.Entities
 {
     public abstract class BaseSchool
     {

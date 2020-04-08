@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.IO.Compression;
 
-namespace Etapa1.Entities
+namespace SchoolSharp.Entities
 {
     public class Student: BaseSchool
     {

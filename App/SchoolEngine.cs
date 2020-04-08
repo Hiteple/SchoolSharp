@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Etapa1.Entities;
+using SchoolSharp.Entities;
 
-namespace Etapa1.App
+namespace SchoolSharp.App
 {
     public sealed class SchoolEngine
     {

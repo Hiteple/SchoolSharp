@@ -1,6 +1,4 @@
-using System;
-
-namespace Etapa1.Entities
+namespace SchoolSharp.Entities
 {
     public class Exam: BaseSchool
     {

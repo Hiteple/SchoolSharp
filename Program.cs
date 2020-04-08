@@ -1,12 +1,11 @@
-﻿using System;
-using System.Linq;
-using Etapa1.App;
-using Etapa1.Entities;
-using Etapa1.Interfaces;
-using Etapa1.Utils;
+﻿using System.Linq;
+using SchoolSharp.App;
+using SchoolSharp.Entities;
+using SchoolSharp.Interfaces;
+using SchoolSharp.Utils;
 using static System.Console;
 
-namespace Etapa1
+namespace SchoolSharp
 {
     class Program
     {

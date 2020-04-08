@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Etapa1.Interfaces;
-using Etapa1.Utils;
+using SchoolSharp.Interfaces;
+using SchoolSharp.Utils;
 
-namespace Etapa1.Entities
+namespace SchoolSharp.Entities
 {
     public class Course: BaseSchool, IAddress
     {
