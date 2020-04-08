@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SchoolSharp.Entities;
 using SchoolSharp.DictionaryKeys;
+using SchoolSharp.Utils;
 
 namespace SchoolSharp.App
 {
@@ -88,9 +89,38 @@ namespace SchoolSharp.App
             // So, we need to assign the school within an array to satisfy that condition
             // And... School.Courses is not of type BaseSchool so we need to convert it (casting)
             dictionary.Add(DictionaryKeysEnum.School, new[] {School});
-            dictionary.Add(DictionaryKeysEnum.Courses, School.Courses.Cast<BaseSchool>());
+            dictionary.Add(DictionaryKeysEnum.Courses, School.Courses);
+
+            // I add the exams in a loop to avoid breaking the unique keys rule
+            var temporaryListSubject = new List<Subject>();
+            var temporaryListStudent = new List<Student>();
+            var temporaryListExam = new List<Exam>();
+            foreach (var course in School.Courses)
+            {
+                temporaryListSubject.AddRange(course.Subjects);
+                temporaryListStudent.AddRange(course.Students);
+                foreach (var student in course.Students)
+                {
+                    temporaryListExam.AddRange(student.Exams);
+                }
+            }
+            dictionary.Add(DictionaryKeysEnum.Subjects, temporaryListSubject);
+            dictionary.Add(DictionaryKeysEnum.Students, temporaryListStudent);
+            dictionary.Add(DictionaryKeysEnum.Exams, temporaryListExam);
 
             return dictionary;
+        }
+
+        public void PrintDictionary(Dictionary<DictionaryKeysEnum, IEnumerable<BaseSchool>> dictionary)
+        {
+            foreach (var obj in dictionary)
+            {
+                Printer.DrawTitle(obj.Key.ToString());
+                foreach (var val in obj.Value)
+                {
+                    Console.WriteLine(val);
+                }
+            }
         }
         #endregion
 
