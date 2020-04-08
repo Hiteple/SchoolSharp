@@ -159,11 +159,17 @@ namespace SchoolSharp.App
         
         #region Method to obtain core objects: first with params to loop conditionally
         public List<BaseSchool> ObtainCoreObjects(
+            out int examsCounter,
+            out int coursesCounter,
+            out int subjectsCounter,
+            out int studentsCounter,
             bool obtainExams = true,
             bool obtainStudents = true, 
             bool obtainSubjects = true, 
             bool obtainCourses = true)
         {
+            // All of them initialized in 0 in stylish way
+            examsCounter = coursesCounter = subjectsCounter = studentsCounter = 0;
             var objList = new List<BaseSchool>();
             objList.Add(School);
             
@@ -171,13 +177,17 @@ namespace SchoolSharp.App
             {
                 objList.AddRange(School.Courses); 
             }
-            
+
+            coursesCounter = School.Courses.Count;
             foreach (var course in School.Courses)
             {
+                subjectsCounter += course.Subjects.Count;
                 if (obtainSubjects)
                 {
                     objList.AddRange(course.Subjects);
                 }
+
+                studentsCounter += course.Students.Count;
                 if (obtainStudents)
                 {
                     objList.AddRange(course.Students);
@@ -187,6 +197,7 @@ namespace SchoolSharp.App
                     foreach (var student in course.Students)
                     {
                         objList.AddRange(student.Exams);
+                        examsCounter += student.Exams.Count;
                     } 
                 }
             }

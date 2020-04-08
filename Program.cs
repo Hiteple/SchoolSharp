@@ -18,8 +18,13 @@ namespace SchoolSharp
             // Print
             PrintCourses(engine.School);
             
-            // Obtain Core Objects
-            var objList = engine.ObtainCoreObjects();
+            // Obtain Core Objects with params to loop conditionally
+            var objList = engine.ObtainCoreObjects(
+                out int examsCounter,
+                out int coursesCounter,
+                out int subjectsCounter,
+                out int studentsCounter
+            );
 
             // using Linq to obtain list of addresses
             var iAddressList = 
