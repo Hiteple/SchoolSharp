@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SchoolSharp.Entities;
+using SchoolSharp.DictionaryKeys;
 
 namespace SchoolSharp.App
 {
@@ -77,6 +78,21 @@ namespace SchoolSharp.App
             School.Courses.RemoveAll(course => course.Name == "600" && course.HourType == HourType.Morning);
             */
         }
+        
+        #region Implementing dictionaries
+        public Dictionary<DictionaryKeysEnum, IEnumerable<BaseSchool>> GetObjectsDictionary()
+        {
+            var dictionary = new Dictionary<DictionaryKeysEnum, IEnumerable<BaseSchool>>();
+            
+            // Problem: the courses key needs to recieve an IEnumerable type of BaseSchool object
+            // So, we need to assign the school within an array to satisfy that condition
+            // And... School.Courses is not of type BaseSchool so we need to convert it (casting)
+            dictionary.Add(DictionaryKeysEnum.School, new[] {School});
+            dictionary.Add(DictionaryKeysEnum.Courses, School.Courses.Cast<BaseSchool>());
+
+            return dictionary;
+        }
+        #endregion
 
         // Regions are for easier reading purposes and help in collapsing blocks of code in the IDE
         #region Here are the methods that add custom-typed objects to the school
@@ -158,7 +174,7 @@ namespace SchoolSharp.App
         }
         
         #region Method to obtain core objects: first with params to loop conditionally
-        public List<BaseSchool> ObtainCoreObjects(
+        public IReadOnlyList<BaseSchool> ObtainCoreObjects(
             out int examsCounter,
             out int coursesCounter,
             out int subjectsCounter,
@@ -202,7 +218,7 @@ namespace SchoolSharp.App
                 }
             }
             
-            return objList;
+            return objList.AsReadOnly();
         }
         #endregion
     }
