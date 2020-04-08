@@ -156,24 +156,43 @@ namespace Etapa1.App
         {
             return courseObj.Name == "600";
         }
-
-        public List<BaseSchool> ObtainCoreObjects()
+        
+        #region Method to obtain core objects: first with params to loop conditionally
+        public List<BaseSchool> ObtainCoreObjects(
+            bool obtainExams = true,
+            bool obtainStudents = true, 
+            bool obtainSubjects = true, 
+            bool obtainCourses = true)
         {
             var objList = new List<BaseSchool>();
             objList.Add(School);
-            objList.AddRange(School.Courses);
+            
+            if (obtainCourses)
+            {
+                objList.AddRange(School.Courses); 
+            }
+            
             foreach (var course in School.Courses)
             {
-                objList.AddRange(course.Subjects);
-                objList.AddRange(course.Students);
-                foreach (var student in course.Students)
+                if (obtainSubjects)
                 {
-                    objList.AddRange(student.Exams);
+                    objList.AddRange(course.Subjects);
+                }
+                if (obtainStudents)
+                {
+                    objList.AddRange(course.Students);
+                }
+                if (obtainExams)
+                {
+                    foreach (var student in course.Students)
+                    {
+                        objList.AddRange(student.Exams);
+                    } 
                 }
             }
             
             return objList;
-            
         }
+        #endregion
     }
 }
