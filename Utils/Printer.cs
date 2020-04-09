@@ -17,5 +17,10 @@ namespace SchoolSharp.Utils
             WriteLine($"| {title} |");
             DrawLine(size);
         }
+
+        public static void PressEnter()
+        {
+            WriteLine("Then, press ENTER to continue...");
+        }
     }
 }

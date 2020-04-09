@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SchoolSharp.App;
 using SchoolSharp.Entities;
@@ -12,6 +13,12 @@ namespace SchoolSharp
     {
         static void Main(string[] args)
         {
+            // How to make an event listener. ProcessExit is name of event, EventAction is the callback
+            // we can use lambda for the callback
+            AppDomain.CurrentDomain.ProcessExit += EventAction;
+            AppDomain.CurrentDomain.ProcessExit += (obj, e) => Printer.DrawTitle("Printer Line!");
+            
+            // Engine initialization
             var engine = new SchoolEngine();
             engine.Initialize();
             Printer.DrawTitle("Welcome to the school!");
@@ -86,7 +93,41 @@ namespace SchoolSharp
             WriteLine($"{studentTest.GetType()}");
             WriteLine($"{ob.GetType()}");
             */
+            
+            // Exams Reporter
+            var reporter = new Reporter(engine.GetObjectsDictionary());
+            var examsList = reporter.GetExamsList();
+            
+            // Capture Exam
+            Exam myExam;
+            string name;
+            string student;
+            string result;
+            Printer.DrawTitle("Capturing exam by the console...");
+            WriteLine("Please provide the name of the exam.");
+            Printer.PressEnter();
+            name = ReadLine();
+            WriteLine("Please provide the student name of the exam:");
+            Printer.PressEnter();
+            student = ReadLine();
+            WriteLine("Please provide the result of the exam:");
+            Printer.PressEnter();
+            result = ReadLine();
+
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(student) || string.IsNullOrWhiteSpace(result))
+            {
+                throw new ArgumentException("The value provided cannot be empty");
+            }
+
+            myExam = new Exam(name, student, double.Parse(result));
+            WriteLine($"{myExam.Name}, {myExam.StudentName}, {myExam.Result}");
         }
+
+        private static void EventAction(object sender, EventArgs e)
+        {
+            Printer.DrawTitle("Finished program!");
+        }
+
         private static void PrintCourses(School school)
         {
             Printer.DrawTitle("School Courses:");
