@@ -111,15 +111,45 @@ namespace SchoolSharp.App
             return dictionary;
         }
 
-        public void PrintDictionary(Dictionary<DictionaryKeysEnum, IEnumerable<BaseSchool>> dictionary)
+        public void PrintDictionary(Dictionary<DictionaryKeysEnum, IEnumerable<BaseSchool>> dictionary, bool printExams)
         {
             foreach (var obj in dictionary)
             {
                 Printer.DrawTitle(obj.Key.ToString());
                 foreach (var val in obj.Value)
                 {
-                    Console.WriteLine(val);
+                    switch (obj.Key)
+                    {
+                        case DictionaryKeysEnum.School:
+                            Console.WriteLine("School: " + val);
+                            break;
+                        case DictionaryKeysEnum.Students:
+                            Console.WriteLine("Students: " + val);
+                            break;
+                        case DictionaryKeysEnum.Courses:
+                            var temporaryCourse = val as Course;
+                            if (temporaryCourse != null)
+                            {
+                                int count = temporaryCourse.Students.Count;
+                                Console.WriteLine("Course: " + val.Name + ", Students: " + count);  
+                            }
+                            break;
+                        case DictionaryKeysEnum.Exams: 
+                            if (printExams)
+                            {
+                                Console.WriteLine(val);
+                            } 
+                            break;
+                        default:
+                            Console.WriteLine(val);
+                            break;
+                    }
                 }
+            }
+            
+            if (!printExams)
+            {
+                Console.WriteLine("Your decided to not print exams");
             }
         }
         #endregion
@@ -150,10 +180,10 @@ namespace SchoolSharp.App
                 {
                     List<Exam> examsList = new List<Exam>()
                     {
-                        new Exam("Mathematics Exam", $"{student.Name}", random.NextDouble() * (5.0 - 0.1) + 0.1),
-                        new Exam("English Exam", $"{student.Name}", random.NextDouble() * (5.0 - 0.1) + 0.1),
-                        new Exam("Cience Exam", $"{student.Name}", random.NextDouble() * (5.0 - 0.1) + 0.1),
-                        new Exam("Philosophy Exam", $"{student.Name}", random.NextDouble() * (5.0 - 0.1) + 0.1),
+                        new Exam("Mathematics Exam", $"{student.Name}", Math.Round(random.NextDouble() * (5.0 - 0.1) + 0.1, 2)),
+                        new Exam("English Exam", $"{student.Name}", Math.Round(random.NextDouble() * (5.0 - 0.1) + 0.1, 2)),
+                        new Exam("Cience Exam", $"{student.Name}", Math.Round(random.NextDouble() * (5.0 - 0.1) + 0.1, 2)),
+                        new Exam("Philosophy Exam", $"{student.Name}", Math.Round(random.NextDouble() * (5.0 - 0.1) + 0.1, 2)),
                     };
                     student.Exams = examsList;
                 }

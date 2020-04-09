@@ -68,7 +68,7 @@ namespace SchoolSharp
             
             // Implementing the dictionary used for the school
             var dictionary = engine.GetObjectsDictionary();
-            engine.PrintDictionary(dictionary);
+            engine.PrintDictionary(dictionary, true);
             
             #endregion
 
